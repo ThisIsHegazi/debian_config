@@ -18,7 +18,7 @@ echo "Installing oh-my-zsh..."
 # --unattended skips the interactive prompts and prevents the installer from
 # switching the shell mid-script, which would cause all subsequent lines to
 # never execute.
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 echo "oh-my-zsh was successfully installed"
 
 # zsh syntax highlighting
@@ -27,7 +27,7 @@ echo "Downloading zsh-syntax-highlighting..."
 # Respects a custom $ZSH_CUSTOM path if set, otherwise falls back to the
 # default ~/.oh-my-zsh/custom location.
 # The directory check prevents a git error if the plugin is already present.
-SYNTAX_HL_DIR="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+SYNTAX_HL_DIR="/home/hegazy/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
 if [ ! -d "$SYNTAX_HL_DIR" ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$SYNTAX_HL_DIR"
 fi
@@ -37,7 +37,7 @@ echo "zsh-syntax-highlighting was successfully installed"
 echo "Downloading zsh-autosuggestions..."
 # Same pattern as above — clone into the custom plugins directory only if
 # the directory does not already exist.
-AUTOSUGG_DIR="${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+AUTOSUGG_DIR="/home/hegazy/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 if [ ! -d "$AUTOSUGG_DIR" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions "$AUTOSUGG_DIR"
 fi
