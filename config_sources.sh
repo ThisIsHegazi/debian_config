@@ -64,17 +64,6 @@ echo "Components 'contrib', 'non-free', and 'non-free-firmware' have been added.
 echo "Updating package list..."
 apt update
 
-# Install Flatpak (universal app packaging system) and the GNOME Software
-# plugin that lets users browse and install Flatpak apps from the GUI.
-# Note: a logout/reboot may be needed before Flatpak apps appear in GNOME Software.
-echo "Installing flatpak..."
-apt install -y flatpak gnome-software-plugin-flatpak
-
-# Register Flathub as a Flatpak remote source. This is the primary app
-# repository for Flatpak. --if-not-exists prevents an error if the remote
-# has already been added on a previous run.
-echo "Adding Flathub remote..."
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Install a core set of development tools and utilities:
 #   zsh                  — Z Shell, feature-rich alternative to bash
@@ -86,6 +75,6 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 #   linux-headers-$(uname -r) — kernel headers for the currently running kernel,
 #                          required to build kernel modules and some drivers
 echo "Installing important packages..."
-apt install -y zsh git curl wget gcc g++ build-essential python-is-python3 linux-headers-$(uname -r)
+apt install -y zsh curl wget gcc g++ build-essential python-is-python3 linux-headers-$(uname -r)
 
 echo "Done."
