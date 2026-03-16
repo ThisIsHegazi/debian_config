@@ -60,6 +60,20 @@ This repository contains shell scripts designed to automate and streamline Debia
 
 ---
 
+### `install_and_config_keyd.sh`
+**Purpose**: Install and configure `keyd` for key remapping
+
+**What it does**:
+- Installs `keyd`
+- Writes `/etc/keyd/default.conf` with a simple remap (Caps Lock → Backspace, Compose/Menu → Caps Lock)
+- Enables and restarts the `keyd` service
+
+**Usage**: `sudo bash install_and_config_keyd.sh`
+
+**Safe to run multiple times**: Won't rewrite the config if it’s unchanged (backs up before updating)
+
+---
+
 ### `ohmyzsh_setup.sh`
 **Purpose**: Install and configure Oh-My-Zsh with useful plugins and aliases
 
@@ -82,19 +96,22 @@ This repository contains shell scripts designed to automate and streamline Debia
 
 ## Quick Setup Workflow
 
-A typical Debian post-install setup might look like:
+A typical Debian post-install setup:
 
 ```bash
 # 1. Configure APT repositories and install essential packages
 sudo bash config_sources.sh
 
-# 2. Configure GRUB with better fonts
+# 2. Install and configure key remapping (keyd)
+sudo bash install_and_config_keyd.sh
+
+# 3. Configure GRUB with better fonts
 sudo bash config_grub.sh
 
-# 3. Set up Oh-My-Zsh for your user
+# 4. Set up Oh-My-Zsh for your user
 bash ohmyzsh_setup.sh
 
-# 4. Add another user to sudo group (if needed)
+# 5. Add another user to sudo group (if needed)
 sudo bash add_user_sudo.sh <username>
 ```
 
