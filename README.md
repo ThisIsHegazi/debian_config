@@ -94,6 +94,23 @@ This repository contains shell scripts designed to automate and streamline Debia
 
 ---
 
+### `scale_sddm.sh`
+**Purpose**: Enable HiDPI scaling for the SDDM login screen
+
+**What it does**:
+- Verifies the script is run as root before writing to `/etc`
+- Checks that SDDM appears to be installed before changing its config
+- Ensures `/etc/sddm.conf.d` is a real directory and not an unexpected file
+- Writes `/etc/sddm.conf.d/hidpi.conf` with Wayland/X11 HiDPI enabled and Qt scaling values set for a 2x login screen
+- Backs up an existing `hidpi.conf` before replacing it
+- Skips rewriting the file when the desired config is already present
+
+**Usage**: `sudo bash scale_sddm.sh`
+
+**Safe to run multiple times**: Won't rewrite the config if it is already correct
+
+---
+
 ## Quick Setup Workflow
 
 A typical Debian post-install setup:
@@ -108,10 +125,13 @@ sudo bash install_and_config_keyd.sh
 # 3. Configure GRUB with better fonts
 sudo bash config_grub.sh
 
-# 4. Set up Oh-My-Zsh for your user
+# 4. Scale the SDDM login screen for HiDPI displays
+sudo bash scale_sddm.sh
+
+# 5. Set up Oh-My-Zsh for your user
 bash ohmyzsh_setup.sh
 
-# 5. Add another user to sudo group (if needed)
+# 6. Add another user to sudo group (if needed)
 sudo bash add_user_sudo.sh <username>
 ```
 
