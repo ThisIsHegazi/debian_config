@@ -75,6 +75,6 @@ apt update
 #   linux-headers-$(uname -r) — kernel headers for the currently running kernel,
 #                          required to build kernel modules and some drivers
 echo "Installing important packages..."
-apt install -y zsh curl wget gcc g++ build-essential python-is-python3
+apt install -y zsh curl wget gcc g++ build-essential python-is-python3 linux-headers-$(uname -r)
 
 echo "Done."
